@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>CALCULATOR</h2>
+        <div class="calcu">
+           
+            <input type="text" style="margin-bottom: 1rem;" placeholder="0" id="invalue">
+           
+           
+            <button class="" onclick=" getClear('cl')" value="">Cl</button>
+            <button class="" onclick=" getDelete('del')" value="">del</button>
+            <button class="" onclick=" getPercentage('%')" value="">%</button>
+            <button class="" onclick="getNumber('(')" id="">(</button>
+            <button class="" onclick="getNumber(')')" id="">)</button>
+            <button class="" onclick=" getNumber('7')"id="">7</button>
+            <button class="" onclick=" getNumber('8')"id="">8</button>
+            <button class="" onclick=" getNumber('9')"id="">9</button>
+            <button class="" onclick=" getNumber('*')"id="">*</button>
+            <button class="" onclick=" getNumber('/')"id="">/</button>
+            <button class="" onclick=" getNumber('4')"id="">4</button>
+            <button class="" onclick=" getNumber('5')"id="">5</button>
+            <button class="" onclick=" getNumber('6')"id="">6</button>
+            <button class="" onclick=" getNumber('-')"id="">-</button>
+            <button class="" onclick="getNumber('^')" id="">^</button>
+            <button class="" onclick=" getNumber('1')"id="">1</button>
+            <button class="" onclick=" getNumber('2')"id="">2</button>
+            <button class="" onclick="getNumber('3')" id="">3</button>
+            <button class="" onclick="getNumber('+')" id="">+</button>
+            <button class="" onclick="getSqrt('sqrt')" value="">sqrt</button>
+            <button class="" onclick="triqFunction('cos')">cos</button>
+            <button class="" onclick="triqFunction('tan')">tan</button>
+            <button class="" onclick="triqFunction('sin')">sin</button>
+            <button class="" onclick="getNumber('.')" id="">.</button>
+            <button class="" onclick="getNumber('0')" id="">0</button>
+            <button class="" onclick="logFunction('log')" id="">log</button>
+            <button class="" onclick="factorailFunction('!')" id="">!</button>
+            <button class="" onclick="expFunction('exp')" id="">EXP</button>
+            <button class="" onclick="absFunction('abs')" id="">Abs</button>
+            <button class="even" onclick="calculate()" value="">=</button>
+        </div>
+    </div>
+    <script>
+        function getNumber(value) {
+              document.getElementById("invalue").value += value  
+        }
+        function calculate() {
+            const ans = document.getElementById("invalue").value ;
+            const result = new Function("return "+ans);
+            document.getElementById("invalue").value=result()
+        }
+        function getClear() {
+            document.getElementById("invalue").value = ""
+        }
+        function getDelete() {
+            const del = document.getElementById("invalue").value
+            document.getElementById("invalue").value = del.slice(-0,-1)
+        }
+        function getSqrt() {
+            const sqrt = document.getElementById("invalue").value;
+            const result = new Function( 'return '+ sqrt)
+            document.getElementById("invalue").value = Math.sqrt(result())
+        }
+        function triqFunction(value) {
+            const trig = document.getElementById("invalue").value;
+            const result = new Function("return "+ trig)
+            document.getElementById("invalue").value = Math[value](result())
+        }
+        function  getPercentage() {
+            const percen = document.getElementById("invalue").value;
+            const result = new Function("return "+ percen/100)
+            document.getElementById("invalue").value = result()
+        }
+        function logFunction() {
+            const getValue =document.getElementById('invalue').value ;
+            const result = new Function('return '+getValue)
+            document.getElementById('invalue').value = Math.log(result())
+        }
+        function absFunction() {
+            const getValue =document.getElementById('invalue').value ;
+            const result = new Function('return '+getValue)
+            document.getElementById('invalue').value = Math.abs(result())
+        }
+        function expFunction() {
+            const getValue =document.getElementById('invalue').value ;
+            const result = new Function('return '+getValue)
+            document.getElementById('invalue').value = Math.exp(result())
+        }
+        function factorailFunction() {
+            const getValue =document.getElementById('invalue').value ;
+            const result = new Function('return '+getValue)
+            function factorial(n) {
+                if (n === 0 || n === 1) {
+                    return 1
+                } else {
+                   return n * factorial(n -1) 
+                }
+            }
+            document.getElementById('invalue').value = factorial(result())
+        }
+    </script>
+    
+</body>
+</html>
